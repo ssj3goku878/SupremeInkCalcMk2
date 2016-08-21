@@ -16,6 +16,7 @@ public class FormulaList {
     public SimpleStringProperty BaseFormula = new SimpleStringProperty();
     public SimpleStringProperty BasePT = new SimpleStringProperty();
 
+    
     public String getBaseFormula() {
         return BaseFormula.get();
     }

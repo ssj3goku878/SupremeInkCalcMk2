@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supremeinkcalcmk2.AddCustomerController">
+   <children>
+      <HBox layoutX="200.0" layoutY="106.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox layoutX="200.0" layoutY="106.0" prefHeight="416.0" prefWidth="634.0" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-34.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="NewCustomerTableView" editable="true" prefHeight="433.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="BaseColorColumn" editable="false" prefWidth="102.0" sortable="false" text="Base Color" />
+                      <TableColumn fx:id="PriceColumn" prefWidth="95.0" sortable="false" text="Price" />
+                    </columns>
+                  </TableView>
+                  <BorderPane prefHeight="400.0" prefWidth="400.0">
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="126.0" layoutY="29.0" text="New PriceList">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="156.0" layoutY="121.0" text="Customer Name" />
+                              <TextField layoutX="125.0" layoutY="151.0" />
+                              <Button fx:id="SaveButton" layoutX="180.0" layoutY="220.0" mnemonicParsing="false" onAction="#SaveButton" text="Save" />
+                           </children>
+                        </Pane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

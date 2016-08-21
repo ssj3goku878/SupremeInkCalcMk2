@@ -13,14 +13,19 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.DefaultComboBoxModel;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -60,6 +65,10 @@ public class MainController implements Initializable {
 
         //Customer combo box
         ComboBoxSelectCustomer.setEditable(true);
+        PantoneFormulaTableView.setEditable(true);
+        CustomerTableView.setEditable(true);
+        Price.setEditable(true);
+
 //        ComboBoxSelectCustomer.getItems().addAll("Register", "O'SULLIVAN", "Graphic Packaging", "Color Graphics", "Sign Masters");
         //CustomerTableView
 //        BaseColor.setCellValueFactory(new PropertyValueFactory<BaseColor, String>("BaseColor"));
@@ -68,7 +77,6 @@ public class MainController implements Initializable {
         //ComboBoxSelectCustomer.setOnAction(e -> System.out.println(ComboBoxSelectCustomer.getValue()));
         buildDataComboBox();
         //buildDataTableView();
-        PantoneFormulaTableView.setEditable(true);
         //load data into CustomerTableView when user interacts with ComboBox list
         ComboBoxEvent();
     }
@@ -120,13 +128,12 @@ public class MainController implements Initializable {
     }
 
     public void CalculateButton() {
-        PantoneFormulaTableView.setEditable(true);
         ObservableList<FormulaList> dataFormuViewTable = FXCollections.observableArrayList();
         BaseFormula.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BaseFormula"));
         BasePT.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BasePT"));
         //connection = SqlConnection.FormulaConnection();
         try {
-            String SQL = "SELECT BaseFormula, BasePT FROM `"+ PantoneNumberLabel.getText() + "`";
+            String SQL = "SELECT BaseFormula, BasePT FROM `" + PantoneNumberLabel.getText() + "`";
 //            String SQL = "Select Name FROM CustomerList WHERE Name = '" + ComboBoxSelectCustomer.getValue() + "'";
             connection = SqlConnection.FormulaConnection();
             ResultSet rs = connection.createStatement().executeQuery(SQL);
@@ -145,6 +152,18 @@ public class MainController implements Initializable {
     }
 
     public void CustomerButton() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCustomerFXML.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            //stops user from using previous window
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 //    public void buildDataTableView() {
@@ -170,8 +189,6 @@ public class MainController implements Initializable {
 //            e.printStackTrace();
 //        }
 //    }
-    
-    
     //combobox sql connection and fill data
     public void buildDataComboBox() {
         //viewtable db connect
