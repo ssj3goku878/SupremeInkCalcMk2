@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -106,6 +108,16 @@ public class MainController implements Initializable {
             ObservableList<BaseColor> dataCustomerViewTable = FXCollections.observableArrayList();
             BaseColor.setCellValueFactory(new PropertyValueFactory<BaseColor, String>("BaseColor"));
             Price.setCellValueFactory(new PropertyValueFactory<BaseColor, String>("Price"));
+            Price.setCellFactory(TextFieldTableCell.forTableColumn());
+            Price.setOnEditCommit(
+                    new EventHandler<TableColumn.CellEditEvent<BaseColor, String>>() {
+                        @Override
+                        public void handle(TableColumn.CellEditEvent<BaseColor, String> t) {
+                            ((BaseColor) t.getTableView().getItems().get(
+                                    t.getTablePosition().getRow())).setPrice(t.getNewValue());
+                        }
+                    }
+            );
             //connection = SqlConnection.CustomerConnection();
             try {
                 String SQL = "Select BaseColor, Price FROM " + ComboBoxSelectCustomer.getValue() + "";
@@ -131,6 +143,17 @@ public class MainController implements Initializable {
         ObservableList<FormulaList> dataFormuViewTable = FXCollections.observableArrayList();
         BaseFormula.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BaseFormula"));
         BasePT.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BasePT"));
+        BasePT.setCellFactory(TextFieldTableCell.forTableColumn());
+        BasePT.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<FormulaList, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<FormulaList, String> t) {
+                        ((FormulaList) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())).setBasePT(t.getNewValue());
+                    }
+                }
+        );
+        
         //connection = SqlConnection.FormulaConnection();
         try {
             String SQL = "SELECT BaseFormula, BasePT FROM `" + PantoneNumberLabel.getText() + "`";
