@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 //Get whats in the combo box (Customer Name)
 //Load the prices from that customer 
 //Get whats in pantone box
 //Load pantone formula
 //do math formula for price
-
 package supremeinkcalcmk2;
 
 import java.net.URL;
@@ -148,6 +145,21 @@ public class MainController implements Initializable {
         });
     }
 
+    public void ButtonNewPantone() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditColorFXML.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            //stops user from using previous window
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void CalculateButton() {
         ObservableList<FormulaList> dataFormuViewTable = FXCollections.observableArrayList();
         BaseFormula.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BaseFormula"));
@@ -162,7 +174,7 @@ public class MainController implements Initializable {
                     }
                 }
         );
-        
+
         //connection = SqlConnection.FormulaConnection();
         try {
             String SQL = "SELECT BaseFormula, BasePT FROM `" + PantoneNumberLabel.getText() + "`";

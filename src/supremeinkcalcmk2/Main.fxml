@@ -11,11 +11,11 @@
          <children>
             <TableView fx:id="PantoneFormulaTableView" prefHeight="578.0" prefWidth="152.0">
               <columns>
-                <TableColumn fx:id="BaseFormula" prefWidth="81.0" sortable="false" text="Base Color" />
-                <TableColumn fx:id="BasePT" prefWidth="69.0" sortable="false" text="\%" />
+                <TableColumn fx:id="BaseFormula" prefWidth="100.0" sortable="false" text="Base Color" />
+                <TableColumn fx:id="BasePT" prefWidth="50.0" sortable="false" text="\%" />
               </columns>
             </TableView>
-            <Button fx:id="ButtonNewPantone" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Add New Pantone" />
+            <Button fx:id="ButtonNewPantone" mnemonicParsing="false" onAction="#ButtonNewPantone" prefHeight="25.0" prefWidth="153.0" text="Add New Pantone" />
          </children>
       </VBox>
    </left>
@@ -25,11 +25,12 @@
             <ComboBox fx:id="ComboBoxSelectCustomer" prefWidth="150.0" promptText="Select Customer" />
             <TableView fx:id="CustomerTableView" prefHeight="557.0" prefWidth="152.0">
               <columns>
-                <TableColumn fx:id="BaseColor" prefWidth="83.0" sortable="false" text="Base Color" />
-                <TableColumn fx:id="Price" editable="true" prefWidth="67.0" sortable="false" text="Price" />
+                <TableColumn fx:id="BaseColor" prefWidth="97.0" sortable="false" text="Base Color" />
+                <TableColumn fx:id="Price" editable="true" prefWidth="53.0" sortable="false" text="Price" />
               </columns>
             </TableView>
-            <Button fx:id="ButtonSaveCustomer" mnemonicParsing="false" onAction="#CustomerButton" prefHeight="25.0" prefWidth="152.0" text="Add New Customer" />
+            <Button fx:id="ButtonSaveCustomer" mnemonicParsing="false" onAction="#CustomerButton" prefHeight="25.0" prefWidth="155.0" text="New Customer" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Edit Customer" />
          </children>
       </VBox>
    </right>
