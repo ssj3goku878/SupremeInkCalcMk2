@@ -3,6 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+//Get whats in the combo box (Customer Name)
+//Load the prices from that customer 
+//Get whats in pantone box
+//Load pantone formula
+//do math formula for price
+
 package supremeinkcalcmk2;
 
 import java.net.URL;
