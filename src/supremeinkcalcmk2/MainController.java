@@ -132,6 +132,7 @@ public class MainController implements Initializable {
 //                dataCustomerViewTable.add(rs.getString("Name"));
                 }
                 CustomerTableView.setItems(dataCustomerViewTable);
+                connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

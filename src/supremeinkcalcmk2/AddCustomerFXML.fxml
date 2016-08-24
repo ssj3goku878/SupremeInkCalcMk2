@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supremeinkcalcmk2.AddCustomerController">
    <children>
-      <HBox layoutX="200.0" layoutY="106.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <HBox layoutX="217.0" layoutY="134.0" prefHeight="416.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox layoutX="200.0" layoutY="106.0" prefHeight="416.0" prefWidth="634.0" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-34.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="NewCustomerTableView" editable="true" prefHeight="433.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="BaseColorColumn" editable="false" prefWidth="102.0" sortable="false" text="Base Color" />
-                      <TableColumn fx:id="PriceColumn" prefWidth="95.0" sortable="false" text="Price" />
-                    </columns>
-                  </TableView>
-                  <BorderPane prefHeight="400.0" prefWidth="400.0">
-                     <center>
-                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="126.0" layoutY="29.0" text="New PriceList">
-                                 <font>
-                                    <Font size="25.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="156.0" layoutY="121.0" text="Customer Name" />
-                              <TextField fx:id="CustomerTextField" layoutX="125.0" layoutY="151.0" />
-                              <Button fx:id="SaveButton" layoutX="180.0" layoutY="220.0" mnemonicParsing="false" onAction="#SaveButton" text="Save" />
-                           </children>
-                        </Pane>
-                     </center>
-                  </BorderPane>
-               </children>
-            </HBox>
+            <BorderPane prefHeight="416.0" prefWidth="637.0">
+               <left>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="CustomerNameText" layoutX="29.0" layoutY="143.0" promptText="Customer Name" />
+                        <Button fx:id="SaveButton" layoutX="82.0" layoutY="210.0" mnemonicParsing="false" onAction="#SaveButton" text="Save " />
+                        <Label layoutX="22.0" layoutY="68.0" text="New Customer Pricelist">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </left>
+               <center>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="YellowText" layoutX="64.0" layoutY="58.0" promptText="Yellow" />
+                        <TextField fx:id="TwoYellowText" layoutX="64.0" layoutY="91.0" promptText="012 Yellow" />
+                        <TextField fx:id="OrangeText" layoutX="64.0" layoutY="123.0" promptText="021 Orange" />
+                        <TextField fx:id="WarmRedText" layoutX="64.0" layoutY="156.0" promptText="Warm Red" />
+                        <TextField fx:id="RedText" layoutX="64.0" layoutY="188.0" promptText="032 Red" />
+                        <TextField fx:id="RhodRedText" layoutX="64.0" layoutY="219.0" promptText="Rhodamin Red" />
+                        <TextField fx:id="RubineText" layoutX="64.0" layoutY="252.0" promptText="Rubine Red" />
+                        <TextField fx:id="PurpleText" layoutX="64.0" layoutY="285.0" promptText="Purple" />
+                        <TextField fx:id="VioletText" layoutX="64.0" layoutY="318.0" promptText="Violet" />
+                        <TextField fx:id="TwoBlueText" layoutX="64.0" layoutY="350.0" promptText="072 Blue" />
+                        <TextField fx:id="ReflexText" layoutX="222.0" layoutY="58.0" promptText="Reflex" />
+                        <TextField fx:id="TwoReflexText" layoutX="222.0" layoutY="91.0" promptText="021 Reflex" />
+                        <TextField fx:id="BlueText" layoutX="222.0" layoutY="123.0" promptText="Blue" />
+                        <TextField fx:id="GreenText" layoutX="222.0" layoutY="156.0" promptText="Green" />
+                        <TextField fx:id="BlackText" layoutX="222.0" layoutY="188.0" promptText="Black" />
+                        <TextField fx:id="WhiteText" layoutX="222.0" layoutY="219.0" promptText="Trans. White" />
+                        <Label layoutX="121.0" layoutY="14.0" text="Enter Pricelist below">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </center>
+            </BorderPane>
          </children>
-      </AnchorPane>
+      </HBox>
    </children>
 </AnchorPane>
