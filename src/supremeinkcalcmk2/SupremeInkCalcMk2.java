@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Nader Ahmed
+ * @author 
  * 8.9.16
  */
 public class SupremeInkCalcMk2 extends Application {

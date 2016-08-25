@@ -13,13 +13,14 @@
                <left>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="29.0" layoutY="143.0" promptText="Pantone Number" />
-                        <Button fx:id="SaveButton" layoutX="82.0" layoutY="210.0" mnemonicParsing="false" text="Save " />
+                        <TextField fx:id="PantoneTextField" layoutX="29.0" layoutY="143.0" promptText="Pantone Number" />
+                        <Button fx:id="SaveButton" layoutX="81.0" layoutY="241.0" mnemonicParsing="false" text="Save " />
                         <Label layoutX="22.0" layoutY="68.0" text="New Pantone Number">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <Button fx:id="LoadButton" layoutX="77.0" layoutY="196.0" mnemonicParsing="false" onAction="#LoadButton" text="Load" />
                      </children>
                   </Pane>
                </left>
