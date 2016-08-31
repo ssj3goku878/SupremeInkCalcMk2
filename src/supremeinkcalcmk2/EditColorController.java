@@ -5,6 +5,8 @@
  */
 package supremeinkcalcmk2;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -53,12 +55,24 @@ public class EditColorController {
     private TextField WhiteText;
     @FXML
     private TextField PantoneTextField;
-
+    Connection connection;
     
     public void LoadButton(){
+        connection = SqlConnection.FormulaConnection();
         try {
-            //String SQL = "SELECT" + PantoneTextField.getText(); + " ";
+            String SQL = "Select * FROM '100';";
+            ResultSet rs = connection.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                String Yellow = rs.getString("BasePt");
+                YellowText.setText(Yellow);
+                
+                String TwoYellow = rs.getString("BasePT");
+                TwoYellowText.setText(TwoYellow);
+            }
         } catch (Exception e) {
+            e.printStackTrace();
+            //Dialogs.create().message("Hi!").showInformation();
+
         }
             
 

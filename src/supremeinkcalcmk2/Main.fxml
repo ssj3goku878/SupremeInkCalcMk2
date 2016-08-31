@@ -54,6 +54,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <Button layoutX="207.0" layoutY="281.0" mnemonicParsing="false" text="Edit Pantone" />
          </children>
       </Pane>
    </center>
