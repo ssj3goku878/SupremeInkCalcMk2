@@ -155,14 +155,13 @@ public class MainController implements Initializable {
                             String newPrice = t.getNewValue(); // get new price
                             String RowName = t.getRowValue().getBaseColor(); //Unique identfier is something that uniquely identify the row. It could be the name of the object that we are pricing here.
                             updatePrice(newPrice, RowName); //Call DAO now
-
                         }
                     }
             );// end editable code
 
             //connection = SqlConnection.CustomerConnection();
             try {
-                String SQL = "Select BaseColor, Price FROM " + ComboBoxSelectCustomer.getValue() + "";
+                String SQL = "Select BaseColor, Price FROM `" + ComboBoxSelectCustomer.getValue() + "`";
 //            String SQL = "Select Name FROM CustomerList WHERE Name = '" + ComboBoxSelectCustomer.getValue() + "'";
                 connection = SqlConnection.CustomerConnection();
                 ResultSet rs = connection.createStatement().executeQuery(SQL);
@@ -197,7 +196,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void CalculateButton() {
+    public void GetFormulaButton() {
         ObservableList<FormulaList> dataFormuViewTable = FXCollections.observableArrayList();
         BaseFormula.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BaseFormula"));
         BasePT.setCellValueFactory(new PropertyValueFactory<FormulaList, String>("BasePT"));
@@ -247,6 +246,14 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    
+    public void calculatePriceButton(){ //button that will calculate the price
+        //divide raw material price by 100
+        //multiply by raw material amount in fomrula
+        //take each number that was multipled and add them up for final price
+        
+        
     }
 
 //    public void buildDataTableView() {

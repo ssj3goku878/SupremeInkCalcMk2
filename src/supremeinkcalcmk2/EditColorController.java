@@ -6,10 +6,12 @@
 package supremeinkcalcmk2;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  *
@@ -56,25 +58,102 @@ public class EditColorController {
     @FXML
     private TextField PantoneTextField;
     Connection connection;
-    
-    public void LoadButton(){
-        connection = SqlConnection.FormulaConnection();
+
+    public void SaveButton() {
+        Connection CN = null;
+        PreparedStatement pstmt1, pstmt2,
+                pstmt3, pstmt4, pstmt5, pstmt6,
+                pstmt7, pstmt8, pstmt9, pstmt10,
+                pstmt11, pstmt12, pstmt13,
+                pstmt14, pstmt15, pstmt16,
+                pstmt17, pstmt18 = null;
         try {
-            String SQL = "Select * FROM '100';";
-            ResultSet rs = connection.createStatement().executeQuery(SQL);
-            while (rs.next()) {
-                String Yellow = rs.getString("BasePt");
-                YellowText.setText(Yellow);
-                
-                String TwoYellow = rs.getString("BasePT");
-                TwoYellowText.setText(TwoYellow);
-            }
+            //sql connection
+            CN = SqlConnection.FormulaConnection();
+
+            String SQL2 = "CREATE TABLE `" + PantoneTextField.getText() + "` "
+                    + "(`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `BaseFormula` "
+                    + "TEXT, `BasePT` INTEGER);";
+
+            
+            String SQL3
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Yellow','" + YellowText.getText() + "' );";
+            String SQL4
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('012 Yellow','" + TwoYellowText.getText() + "' );";
+            String SQL5
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('021 Orange','" + OrangeText.getText() + "' );";
+            String SQL6
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Warm Red','" + WarmRedText.getText() + "' );";
+            String SQL7
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('032 Red','" + RedText.getText() + "' );";
+            String SQL8
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Rhodamin Red','" + RhodRedText.getText() + "' );";
+            String SQL9
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Rubine','" + RubineText.getText() + "' );";
+            String SQL10
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Purple','" + PurpleText.getText() + "' );";
+            String SQL11
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Violet','" + VioletText.getText() + "' );";
+            String SQL12
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('072 Blue','" + BlueText.getText() + "' );";
+            String SQL13
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Reflex','" + ReflexText.getText() + "' );";
+            String SQL14
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('021 Reflex (AQ)','" + TwoReflexText.getText() + "' );";
+            String SQL15
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Blue','" + TwoBlueText.getText() + "' );";
+            String SQL16
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Green','" + GreenText.getText() + "' );";
+            String SQL17
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Black','" + BlackText.getText() + "' );";
+            String SQL18
+                    = "INSERT INTO `" + PantoneTextField.getText() + "`(`BaseFormula`, `BasePT`) VALUES ('Trans. White','" + WhiteText.getText() + "' );";
+
+            pstmt2 = CN.prepareStatement(SQL2);
+//            pstmt1.setString(1, PantoneTextField.getText()); // Insert into
+
+//            pstmt1.execute();
+            pstmt2.executeUpdate();
+            pstmt3 = CN.prepareStatement(SQL3);
+            pstmt4 = CN.prepareStatement(SQL4);
+            pstmt5 = CN.prepareStatement(SQL5);
+            pstmt6 = CN.prepareStatement(SQL6);
+            pstmt7 = CN.prepareStatement(SQL7);
+            pstmt8 = CN.prepareStatement(SQL8);
+            pstmt9 = CN.prepareStatement(SQL9);
+            pstmt10 = CN.prepareStatement(SQL10);
+            pstmt11 = CN.prepareStatement(SQL11);
+            pstmt12 = CN.prepareStatement(SQL12);
+            pstmt13 = CN.prepareStatement(SQL13);
+            pstmt14 = CN.prepareStatement(SQL14);
+            pstmt15 = CN.prepareStatement(SQL15);
+            pstmt16 = CN.prepareStatement(SQL16);
+            pstmt17 = CN.prepareStatement(SQL17);
+            pstmt18 = CN.prepareStatement(SQL18);
+
+            pstmt3.execute();
+            pstmt4.execute();
+            pstmt5.execute();
+            pstmt6.execute();
+            pstmt7.execute();
+            pstmt8.execute();
+            pstmt9.execute();
+            pstmt10.execute();
+            pstmt11.execute();
+            pstmt12.execute();
+            pstmt13.execute();
+            pstmt14.execute();
+            pstmt15.execute();
+            pstmt16.execute();
+            pstmt17.execute();
+            pstmt18.execute();
+
+            CN.close();
+            //close window
+            Stage stage = (Stage) SaveButton.getScene().getWindow();
+            stage.close();
         } catch (Exception e) {
             e.printStackTrace();
-            //Dialogs.create().message("Hi!").showInformation();
-
         }
-            
-
     }
 }

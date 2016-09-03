@@ -12,10 +12,10 @@
             <TableView fx:id="PantoneFormulaTableView" prefHeight="578.0" prefWidth="152.0">
               <columns>
                 <TableColumn fx:id="BaseFormula" prefWidth="100.0" sortable="false" text="Base Color" />
-                <TableColumn fx:id="BasePT" prefWidth="50.0" sortable="false" text="\%" />
+                <TableColumn fx:id="BasePT" prefWidth="51.0" sortable="false" text="\%" />
               </columns>
             </TableView>
-            <Button fx:id="ButtonNewPantone" mnemonicParsing="false" onAction="#ButtonNewPantone" prefHeight="25.0" prefWidth="153.0" text="Add New Pantone" />
+            <Button fx:id="ButtonNewPantone" mnemonicParsing="false" onAction="#ButtonNewPantone" prefHeight="25.0" prefWidth="153.0" text="New Pantone or SF#" />
          </children>
       </VBox>
    </left>
@@ -30,7 +30,6 @@
               </columns>
             </TableView>
             <Button fx:id="ButtonSaveCustomer" mnemonicParsing="false" onAction="#CustomerButton" prefHeight="25.0" prefWidth="155.0" text="New Customer" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Edit Customer" />
          </children>
       </VBox>
    </right>
@@ -40,9 +39,9 @@
             <Label layoutX="203.0" layoutY="193.0" text="Pantone Number" />
             <TextField fx:id="PantoneNumberLabel" layoutX="173.0" layoutY="220.0" />
             <Label fx:id="PriceLabel" layoutX="132.0" layoutY="293.0" />
-            <Button fx:id="GetFormulaButton" layoutX="207.0" layoutY="251.0" mnemonicParsing="false" onAction="#CalculateButton" text="Get Formula" />
+            <Button fx:id="GetFormulaButton" layoutX="207.0" layoutY="251.0" mnemonicParsing="false" onAction="#GetFormulaButton" text="Get Formula" />
             <Label layoutX="234.0" layoutY="446.0" text="Label" />
-            <Button fx:id="CalculatePriceButton" layoutX="201.0" layoutY="411.0" mnemonicParsing="false" text="Calculate Price" />
+            <Button fx:id="CalculatePriceButton" layoutX="201.0" layoutY="411.0" mnemonicParsing="false" onAction="#calculatePriceButton" text="Calculate Price" />
             <Label fx:id="LogoLabel" layoutX="145.0" layoutY="40.0" prefHeight="37.0" prefWidth="207.0" text="Supreme Ink Co ">
                <font>
                   <Font size="28.0" />
@@ -54,7 +53,6 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="207.0" layoutY="281.0" mnemonicParsing="false" text="Edit Pantone" />
          </children>
       </Pane>
    </center>
