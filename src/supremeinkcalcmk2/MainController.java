@@ -108,20 +108,34 @@ public class MainController implements Initializable {
 //            new BaseColor("Black", 8.7),
 //            new BaseColor("Trans. White", 8.7)
 //    );
-    
     //update price from edit
-    public void updatePrice(String newPrice, String uniqueIdentifier) {
+    public void updatePrice(String newPrice, String RowName) {
         try {
             String updateQuery = "UPDATE " + ComboBoxSelectCustomer.getValue() + " SET Price = ? WHERE BaseColor = ?"; //If you require multiple columns to get a unique row, add them in the where clause as well.
             connection = SqlConnection.CustomerConnection();
             PreparedStatement ps = connection.prepareStatement(updateQuery); //con is the connection object
             ps.setString(1, newPrice); //if a string
-            ps.setString(2, uniqueIdentifier); //if a string
+            ps.setString(2, RowName); //if a string
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("could not update price");
 
+        }
+    }
+
+    //update BaseBT from edit
+    public void updateBasePT(String newBasePT, String rowName) {
+        try {
+            String updateQuery = "UPDATE `" + PantoneNumberLabel.getText() + "` SET BasePT = ? WHERE BaseFormula = ?"; //If you require multiple columns to get a unique row, add them in the where clause as well.
+            connection = SqlConnection.FormulaConnection();
+            PreparedStatement ps = connection.prepareStatement(updateQuery);
+            ps.setString(1, newBasePT);
+            ps.setString(2, rowName);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("could not update formula");
         }
     }
 
@@ -139,8 +153,8 @@ public class MainController implements Initializable {
                         public void handle(TableColumn.CellEditEvent<BaseColor, String> t) {
                             ((BaseColor) t.getTableView().getItems().get(t.getTablePosition().getRow())).setPrice(t.getNewValue());
                             String newPrice = t.getNewValue(); // get new price
-                            String uniqueIdentifier = t.getRowValue().getBaseColor(); //Unique identfier is something that uniquely identify the row. It could be the name of the object that we are pricing here.
-                            updatePrice(newPrice, uniqueIdentifier); //Call DAO now
+                            String RowName = t.getRowValue().getBaseColor(); //Unique identfier is something that uniquely identify the row. It could be the name of the object that we are pricing here.
+                            updatePrice(newPrice, RowName); //Call DAO now
 
                         }
                     }
@@ -192,8 +206,10 @@ public class MainController implements Initializable {
                 new EventHandler<TableColumn.CellEditEvent<FormulaList, String>>() {
                     @Override
                     public void handle(TableColumn.CellEditEvent<FormulaList, String> t) {
-                        ((FormulaList) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())).setBasePT(t.getNewValue());
+                        ((FormulaList) t.getTableView().getItems().get(t.getTablePosition().getRow())).setBasePT(t.getNewValue());
+                        String newBasePT = t.getNewValue();
+                        String rowName = t.getRowValue().getBaseFormula();
+                        updateBasePT(newBasePT, rowName);
                     }
                 }
         );
