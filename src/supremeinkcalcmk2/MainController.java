@@ -12,6 +12,7 @@ package supremeinkcalcmk2;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -75,6 +76,8 @@ public class MainController implements Initializable {
         PantoneFormulaTableView.setEditable(true);
         CustomerTableView.setEditable(true);
         Price.setEditable(true);
+        buildDataComboBox(); //call build buildDataComboBox method
+        ComboBoxEvent(); // call ComboBoxEvent method
 
 //        ComboBoxSelectCustomer.getItems().addAll("Register", "O'SULLIVAN", "Graphic Packaging", "Color Graphics", "Sign Masters");
         //CustomerTableView
@@ -82,11 +85,10 @@ public class MainController implements Initializable {
 //        Price.setCellValueFactory(new PropertyValueFactory<BaseColor, Double>("Price"));
 //        CustomerTableView.setItems(data);
         //ComboBoxSelectCustomer.setOnAction(e -> System.out.println(ComboBoxSelectCustomer.getValue()));
-        buildDataComboBox();
         //buildDataTableView();
         //load data into CustomerTableView when user interacts with ComboBox list
-        ComboBoxEvent();
     }
+
     //Customer TableView
 //    ObservableList<BaseColor> data = FXCollections.observableArrayList(
 //            new BaseColor("Yellow", 5.4),
@@ -106,6 +108,22 @@ public class MainController implements Initializable {
 //            new BaseColor("Black", 8.7),
 //            new BaseColor("Trans. White", 8.7)
 //    );
+    
+    //update price from edit
+    public void updatePrice(String newPrice, String uniqueIdentifier) {
+        try {
+            String updateQuery = "UPDATE " + ComboBoxSelectCustomer.getValue() + " SET Price = ? WHERE BaseColor = ?"; //If you require multiple columns to get a unique row, add them in the where clause as well.
+            connection = SqlConnection.CustomerConnection();
+            PreparedStatement ps = connection.prepareStatement(updateQuery); //con is the connection object
+            ps.setString(1, newPrice); //if a string
+            ps.setString(2, uniqueIdentifier); //if a string
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("could not update price");
+
+        }
+    }
 
     //ComboBox on event
     public void ComboBoxEvent() {
@@ -113,16 +131,21 @@ public class MainController implements Initializable {
             ObservableList<BaseColor> dataCustomerViewTable = FXCollections.observableArrayList();
             BaseColor.setCellValueFactory(new PropertyValueFactory<BaseColor, String>("BaseColor"));
             Price.setCellValueFactory(new PropertyValueFactory<BaseColor, String>("Price"));
-            Price.setCellFactory(TextFieldTableCell.forTableColumn());
-            Price.setOnEditCommit(
+
+            Price.setCellFactory(TextFieldTableCell.forTableColumn());// change each column to textfield on click
+            Price.setOnEditCommit( // make each table editable
                     new EventHandler<TableColumn.CellEditEvent<BaseColor, String>>() {
                         @Override
                         public void handle(TableColumn.CellEditEvent<BaseColor, String> t) {
-                            ((BaseColor) t.getTableView().getItems().get(
-                                    t.getTablePosition().getRow())).setPrice(t.getNewValue());
+                            ((BaseColor) t.getTableView().getItems().get(t.getTablePosition().getRow())).setPrice(t.getNewValue());
+                            String newPrice = t.getNewValue(); // get new price
+                            String uniqueIdentifier = t.getRowValue().getBaseColor(); //Unique identfier is something that uniquely identify the row. It could be the name of the object that we are pricing here.
+                            updatePrice(newPrice, uniqueIdentifier); //Call DAO now
+
                         }
                     }
-            );
+            );// end editable code
+
             //connection = SqlConnection.CustomerConnection();
             try {
                 String SQL = "Select BaseColor, Price FROM " + ComboBoxSelectCustomer.getValue() + "";
@@ -142,8 +165,8 @@ public class MainController implements Initializable {
                 e.printStackTrace();
             }
 
-        });
-    }
+        }); // end on action event (load tableview from combo box selection)
+    }//end combobox method
 
     public void ButtonNewPantone() {
         try {
