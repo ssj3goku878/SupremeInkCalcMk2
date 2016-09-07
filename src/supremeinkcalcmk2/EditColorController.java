@@ -72,7 +72,7 @@ public class EditColorController {
             CN = SqlConnection.FormulaConnection();
 
             String SQL2 = "CREATE TABLE `" + PantoneTextField.getText() + "` "
-                    + "(`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `BaseFormula` "
+                    + "(`BaseFormula` "
                     + "TEXT, `BasePT` INTEGER);";
 
             
