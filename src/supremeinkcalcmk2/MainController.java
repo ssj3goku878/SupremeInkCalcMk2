@@ -189,6 +189,7 @@ public class MainController implements Initializable {
             //stops user from using previous window
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -241,6 +242,7 @@ public class MainController implements Initializable {
             //stops user from using previous window
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

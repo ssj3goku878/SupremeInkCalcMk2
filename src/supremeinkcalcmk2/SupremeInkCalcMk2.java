@@ -31,8 +31,11 @@ public class SupremeInkCalcMk2 extends Application {
     primaryStage.setTitle("Supreme Ink Customer Price Calculator");
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
+    primaryStage.setResizable(false);
     primaryStage.show();
     
+
+
     
 
     }
