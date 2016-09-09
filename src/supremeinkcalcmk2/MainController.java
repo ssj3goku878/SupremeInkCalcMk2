@@ -34,6 +34,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  * FXML Controller class
@@ -62,7 +63,44 @@ public class MainController implements Initializable {
     private TextField PantoneNumberLabel;
     @FXML
     private Label LogoLabel;
+    @FXML
+    private Label PriceLabel;
+    
     Connection connection;
+
+    public String YellowFormula;
+    public String TwoYellowFormula;
+    public String TwoOrangeFormula;
+    public String WarmRedFormula;
+    public String RhodRedFormula;
+    public String RubineFormula;
+    public String PurpleFormula;
+    public String VioletFormula;
+    public String TwoBlueFormula;
+    public String ReflexFormula;
+    public String TwoReflexFormula;
+    public String BlueFormula;
+    public String GreenFormula;
+    public String BlackFormula;
+    public String WhiteFormula;
+    public String TwoRedFormula;
+
+    public String YellowPrice;
+    public String TwoYellowPrice;
+    public String TwoOrangePrice;
+    public String WarmRedPrice;
+    public String RhodRedPrice;
+    public String RubinePrice;
+    public String PurplePrice;
+    public String VioletPrice;
+    public String TwoBluePrice;
+    public String ReflexPrice;
+    public String TwoReflexPrice;
+    public String BluePrice;
+    public String GreenPrice;
+    public String BlackPrice;
+    public String WhitePrice;
+    public String TwoRedPrice;
 
     /**
      * Initializes the controller class.
@@ -260,178 +298,233 @@ public class MainController implements Initializable {
 
             String Yellow = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Yellow';";
             ResultSet Yellowrs = connection.createStatement().executeQuery(Yellow);
-            String YellowFormula = Yellowrs.getString(2);
+            YellowFormula = Yellowrs.getString(2);
             System.out.println("Fomrula Yellow :" + YellowFormula);
 
             String TwoYellow = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = '012 Yellow';";
             ResultSet TwoYellowrs = connection.createStatement().executeQuery(TwoYellow);
-            String TwoYellowFormula = TwoYellowrs.getString(2);
+            TwoYellowFormula = TwoYellowrs.getString(2);
             System.out.println("Fomrula 012 Yellow :" + TwoYellowFormula);
 
             String TwoOrange = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = '021 Orange';";
             ResultSet TwoOrangers = connection.createStatement().executeQuery(TwoOrange);
-            String TwoOrangeFormula = TwoOrangers.getString(2);
+            TwoOrangeFormula = TwoOrangers.getString(2);
             System.out.println("Fomrula 012 Orange :" + TwoOrangeFormula);
 
             String WarmRed = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Warm Red';";
             ResultSet WarmRedrs = connection.createStatement().executeQuery(WarmRed);
-            String WarmRedFormula = WarmRedrs.getString(2);
+            WarmRedFormula = WarmRedrs.getString(2);
             System.out.println("Fomrula Warm Red :" + WarmRedFormula);
 
             String TwoRed = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = '032 Red';";
             ResultSet TwoRedrs = connection.createStatement().executeQuery(TwoRed);
-            String TwoRedFormula = TwoRedrs.getString(2);
+            TwoRedFormula = TwoRedrs.getString(2);
             System.out.println("Fomrula 032 Red :" + TwoRedFormula);
 
             String RhodRed = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Rhodamin Red';";
             ResultSet RhodRedrs = connection.createStatement().executeQuery(RhodRed);
-            String RhodRedFormula = RhodRedrs.getString(2);
+            RhodRedFormula = RhodRedrs.getString(2);
             System.out.println("Fomrula Rhodamin Red :" + RhodRedFormula);
 
             String Rubine = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Rubine';";
             ResultSet Rubiners = connection.createStatement().executeQuery(Rubine);
-            String RubineFormula = Rubiners.getString(2);
+            RubineFormula = Rubiners.getString(2);
             System.out.println("Fomrula Rubine :" + RubineFormula);
 
             String Purple = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Purple';";
             ResultSet Purplers = connection.createStatement().executeQuery(Purple);
-            String PurpleFormula = Purplers.getString(2);
+            PurpleFormula = Purplers.getString(2);
             System.out.println("Fomrula Purple :" + PurpleFormula);
 
             String Violet = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Violet';";
             ResultSet Violetrs = connection.createStatement().executeQuery(Violet);
-            String VioletFormula = Violetrs.getString(2);
+            VioletFormula = Violetrs.getString(2);
             System.out.println("Fomrula Violet :" + VioletFormula);
 
             String TwoBlue = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = '072 Blue';";
             ResultSet TwoBluers = connection.createStatement().executeQuery(TwoBlue);
-            String TwoBlueFormula = TwoBluers.getString(2);
+            TwoBlueFormula = TwoBluers.getString(2);
             System.out.println("Fomrula 072 Blue :" + TwoBlueFormula);
 
             String Reflex = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Reflex';";
             ResultSet Reflexrs = connection.createStatement().executeQuery(Reflex);
-            String ReflexFormula = Reflexrs.getString(2);
+            ReflexFormula = Reflexrs.getString(2);
             System.out.println("Fomrula Reflex :" + ReflexFormula);
 
             String TwoReflex = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = '021 Reflex (AQ)';";
             ResultSet TwoReflexrs = connection.createStatement().executeQuery(TwoReflex);
-            String TwoReflexrsFormula = TwoReflexrs.getString(2);
-            System.out.println("Fomrula 021 Reflex (AQ) :" + TwoReflexrsFormula);
+            TwoReflexFormula = TwoReflexrs.getString(2);
+            System.out.println("Fomrula 021 Reflex (AQ) :" + TwoReflexFormula);
 
             String Blue = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Blue';";
             ResultSet Bluers = connection.createStatement().executeQuery(Blue);
-            String BlueFormula = Bluers.getString(2);
+            BlueFormula = Bluers.getString(2);
             System.out.println("Fomrula Blue :" + BlueFormula);
 
             String Green = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Green';";
             ResultSet Greenrs = connection.createStatement().executeQuery(Green);
-            String GreenFormula = Greenrs.getString(2);
+            GreenFormula = Greenrs.getString(2);
             System.out.println("Fomrula Green :" + GreenFormula);
 
             String Black = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Black';";
             ResultSet Blackrs = connection.createStatement().executeQuery(Black);
-            String BlackFormula = Blackrs.getString(2);
+            BlackFormula = Blackrs.getString(2);
             System.out.println("Fomrula Black :" + BlackFormula);
 
             String White = "SELECT * FROM `" + PantoneNumberLabel.getText() + "` WHERE BaseFormula = 'Trans. White';";
             ResultSet Whiters = connection.createStatement().executeQuery(White);
-            String WhiteFormula = Whiters.getString(2);
+            WhiteFormula = Whiters.getString(2);
             System.out.println("Fomrula White :" + WhiteFormula);
-            connection.close();
         } catch (Exception e) {
             System.out.println("Error getting formulas");
             e.printStackTrace();
         }
-        
+
         //get customer prices
         try {
             connection = SqlConnection.CustomerConnection();
-            
+
             String Yellow = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Yellow';";
             ResultSet Yellowrs = connection.createStatement().executeQuery(Yellow);
-            String YellowPrice = Yellowrs.getString(3);
+            YellowPrice = Yellowrs.getString(3);
             System.out.println("Price Yellow :" + YellowPrice);
-            
+
             String TwoYellow = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = '012 Yellow';";
             ResultSet TwoYellowrs = connection.createStatement().executeQuery(TwoYellow);
-            String TwoYellowPrice = TwoYellowrs.getString(3);
+            TwoYellowPrice = TwoYellowrs.getString(3);
             System.out.println("Price 012 Yellow :" + TwoYellowPrice);
 
             String TwoOrange = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = '021 Orange';";
             ResultSet TwoOrangers = connection.createStatement().executeQuery(TwoOrange);
-            String TwoOrangePrice = TwoOrangers.getString(3);
+            TwoOrangePrice = TwoOrangers.getString(3);
             System.out.println("Price 012 Orange :" + TwoOrangePrice);
 
             String WarmRed = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Warm Red';";
             ResultSet WarmRedrs = connection.createStatement().executeQuery(WarmRed);
-            String WarmRedPrice = WarmRedrs.getString(3);
+            WarmRedPrice = WarmRedrs.getString(3);
             System.out.println("Price Warm Red :" + WarmRedPrice);
 
             String TwoRed = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = '032 Red';";
             ResultSet TwoRedrs = connection.createStatement().executeQuery(TwoRed);
-            String TwoRedPrice = TwoRedrs.getString(3);
+            TwoRedPrice = TwoRedrs.getString(3);
             System.out.println("Price 032 Red :" + TwoRedPrice);
 
             String RhodRed = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Rhodamin Red';";
             ResultSet RhodRedrs = connection.createStatement().executeQuery(RhodRed);
-            String RhodRedPrice = RhodRedrs.getString(3);
+            RhodRedPrice = RhodRedrs.getString(3);
             System.out.println("Price Rhodamin Red :" + RhodRedPrice);
 
             String Rubine = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Rubine';";
             ResultSet Rubiners = connection.createStatement().executeQuery(Rubine);
-            String RubinePrice = Rubiners.getString(3);
+            RubinePrice = Rubiners.getString(3);
             System.out.println("Price Rubine :" + RubinePrice);
 
             String Purple = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Purple';";
             ResultSet Purplers = connection.createStatement().executeQuery(Purple);
-            String PurplePrice = Purplers.getString(3);
+            PurplePrice = Purplers.getString(3);
             System.out.println("Price Purple :" + PurplePrice);
 
             String Violet = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Violet';";
             ResultSet Violetrs = connection.createStatement().executeQuery(Violet);
-            String VioletPrice = Violetrs.getString(3);
+            VioletPrice = Violetrs.getString(3);
             System.out.println("Price Violet :" + VioletPrice);
 
             String TwoBlue = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = '072 Blue';";
             ResultSet TwoBluers = connection.createStatement().executeQuery(TwoBlue);
-            String TwoBluePrice = TwoBluers.getString(3);
+            TwoBluePrice = TwoBluers.getString(3);
             System.out.println("Price 072 Blue :" + TwoBluePrice);
 
             String Reflex = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Reflex';";
             ResultSet Reflexrs = connection.createStatement().executeQuery(Reflex);
-            String ReflexPrice = Reflexrs.getString(3);
+            ReflexPrice = Reflexrs.getString(3);
             System.out.println("Price Reflex :" + ReflexPrice);
 
             String TwoReflex = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = '021 Reflex (AQ)';";
             ResultSet TwoReflexrs = connection.createStatement().executeQuery(TwoReflex);
-            String TwoReflexrsPrice = TwoReflexrs.getString(3);
-            System.out.println("Price 021 Reflex (AQ) :" + TwoReflexrsPrice);
+            TwoReflexPrice = TwoReflexrs.getString(3);
+            System.out.println("Price 021 Reflex (AQ) :" + TwoReflexPrice);
 
             String Blue = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Blue';";
             ResultSet Bluers = connection.createStatement().executeQuery(Blue);
-            String BluePrice = Bluers.getString(3);
+            BluePrice = Bluers.getString(3);
             System.out.println("Price Blue :" + BluePrice);
 
             String Green = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Green';";
             ResultSet Greenrs = connection.createStatement().executeQuery(Green);
-            String GreenPrice = Greenrs.getString(3);
+            GreenPrice = Greenrs.getString(3);
             System.out.println("Price Green :" + GreenPrice);
 
             String Black = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Black';";
             ResultSet Blackrs = connection.createStatement().executeQuery(Black);
-            String BlackPrice = Blackrs.getString(3);
+            BlackPrice = Blackrs.getString(3);
             System.out.println("Price Black :" + BlackPrice);
 
             String White = "SELECT * FROM `" + ComboBoxSelectCustomer.getValue() + "` WHERE BaseColor = 'Trans. White';";
             ResultSet Whiters = connection.createStatement().executeQuery(White);
-            String WhitePrice = Whiters.getString(3);
+            WhitePrice = Whiters.getString(3);
             System.out.println("Price White :" + WhitePrice);
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error getting price");
         }
+        double YF = Double.parseDouble(YellowFormula);
+        double TYF = Double.parseDouble(TwoYellowFormula);
+        double TOF = Double.parseDouble(TwoOrangeFormula);
+        double WRF = Double.parseDouble(WarmRedFormula);
+        double RF = Double.parseDouble(RhodRedFormula);
+        double PF = Double.parseDouble(PurpleFormula);
+        double RBF = Double.parseDouble(TwoBlueFormula);
+        double TRF = Double.parseDouble(TwoReflexFormula);
+        double BF = Double.parseDouble(BlueFormula);
+        double GF = Double.parseDouble(GreenFormula);
+        double BBF = Double.parseDouble(BlackFormula);
+        double WF = Double.parseDouble(WhiteFormula);
+        double TRRF = Double.parseDouble(TwoRedFormula);
+        double VF = Double.parseDouble(VioletFormula);
+        double RRF = Double.parseDouble(ReflexFormula);
+        double RUF = Double.parseDouble(RubineFormula);
 
+        double YP = Double.parseDouble(YellowPrice);
+        double TYP = Double.parseDouble(TwoYellowPrice);
+        double TOP = Double.parseDouble(TwoOrangePrice);
+        double WRP = Double.parseDouble(WarmRedPrice);
+        double RP = Double.parseDouble(RhodRedPrice);
+        double PP = Double.parseDouble(PurplePrice);
+        double RBP = Double.parseDouble(TwoBluePrice);
+        double TRP = Double.parseDouble(TwoReflexPrice);
+        double BP = Double.parseDouble(BluePrice);
+        double GP = Double.parseDouble(GreenPrice);
+        double BBP = Double.parseDouble(BlackPrice);
+        double WP = Double.parseDouble(WhitePrice);
+        double TRRP = Double.parseDouble(TwoRedPrice);
+        double VP = Double.parseDouble(VioletPrice);
+        double RRP = Double.parseDouble(ReflexPrice);
+        double RUP = Double.parseDouble(RubinePrice);
+
+        double y = YP / 100 * YF;
+        double ytwo = TYP / 100 * TYF;
+        double or = TOP / 100 * TOF;
+        double wr = WRP / 100 * WRF;
+        double othtwo = RP / 100 * RF;
+        double ru = PP / 100 * PF;
+        double rh = RBP / 100 * RBF;
+        double pur = TRP / 100 * TRF;
+        double vio = BP / 100 * BF;
+        double osevtwo = GP / 100 * GF;
+        double ref = BBP / 100 * BBF;
+        double reftwo = WP / 100 * WF;
+        double blu = TRRP / 100 * TRRF;
+        double gre = VP / 100 * VF;
+        double Blk = RRP / 100 * RRF;
+        double wh = RUP / 100 * RUF;
+
+        double DividedFormula = y + ytwo + or + wr + othtwo + ru + rh
+                + pur + vio + osevtwo + ref + reftwo + blu + gre + Blk + wh;
+        System.out.println(DividedFormula);
+        round(DividedFormula, 3);
+        String FinalPrice = String.valueOf(DividedFormula);
+        PriceLabel.setText("$" +FinalPrice);
     }
 
 //    public void buildDataTableView() {

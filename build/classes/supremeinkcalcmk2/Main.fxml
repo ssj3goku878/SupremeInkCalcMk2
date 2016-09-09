@@ -40,15 +40,18 @@
             <TextField fx:id="PantoneNumberLabel" layoutX="173.0" layoutY="220.0" />
             <Label fx:id="PriceLabel" layoutX="132.0" layoutY="293.0" />
             <Button fx:id="GetFormulaButton" layoutX="207.0" layoutY="251.0" mnemonicParsing="false" onAction="#GetFormulaButton" text="Get Formula" />
-            <Label layoutX="234.0" layoutY="446.0" text="Label" />
-            <Button fx:id="CalculatePriceButton" layoutX="201.0" layoutY="411.0" mnemonicParsing="false" onAction="#calculatePriceButton" text="Calculate Price" />
+            <Label fx:id="PriceLabel" layoutX="208.0" layoutY="470.0" textAlignment="CENTER" textFill="#2809da" underline="true" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font></Label>
+            <Button fx:id="CalculatePriceButton" layoutX="202.0" layoutY="298.0" mnemonicParsing="false" onAction="#calculatePriceButton" text="Calculate Price" />
             <Label fx:id="LogoLabel" layoutX="145.0" layoutY="40.0" prefHeight="37.0" prefWidth="207.0" text="Supreme Ink Co ">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
             <Label layoutX="438.0" layoutY="578.0" text="Version 2" />
-            <Label layoutX="189.0" layoutY="80.0" text="Price Generator">
+            <Label layoutX="131.0" layoutY="80.0" text="Customer Management System">
                <font>
                   <Font size="17.0" />
                </font>
